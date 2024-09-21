@@ -1,0 +1,26 @@
+{% extends 'base_temp.html'%}
+{% block title %}HomePage {% endblock %}
+
+{% block content%}
+<div class="h-screen w-screen bg-slate-900 justify-center items-center">
+{% for blog in blogs %}
+
+<div class="flex text-white p-4">
+    <div class="flex flex-col p-5 justify-between">
+        <div>
+        <h3>{{blog.title}}</h3>
+        </div>
+        <div class="w-6 h-6">
+        <img src="{{blog.image.url}}" alt="image" class="h-10 w-10">
+        </div>
+        <div>
+        <p>{{blog.content}}</p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+<h1>done</h1>
+</div>
+
+{% endblock %}
