@@ -6,3 +6,6 @@ from .forms import BlogForm
 def home(request):
     blogs=BlogModel.objects.all().order_by('-created_at')
     return render(request,'index.html',{'blogs':blogs})
+
+def create(request):
+    pass

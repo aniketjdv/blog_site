@@ -2,28 +2,27 @@
 {% block title %}HomePage {% endblock %}
 
 {% block content%}
-<div class=" bg-slate-900">
+<div class="bg-slate-900 ">
 
 
-{% for blog in blogs %}
+    {% for blog in blogs %}
 
-<div class=" text-black p-4">
-    <div class="flex">
-     <div class="flex flex-col p-5 justify-between bg-slate-300 rounded-md max-w-80">
-        <div>
-            <h3 class="text-gray-600">{{blog.title}}</h3>
-        </div>
-        <div class="w-[100%] h-52 mt-5">
+    <div class=" text-black p-4">
+        <div class="flex flex-col p-5 justify-between bg-slate-300 rounded-md max-w-80">
+        
             <img src="{{blog.image.url}}" alt="image" class="rounded-md shadow-lg object-cover">
-        </div>
-        <div class="mt-5">
-             <p class="text-balance">{{blog.content}}</p>
-        </div>
+            <div class="mt-5">
+                <h3 class="text-xl hover:text-yellow-200">{{blog.title}}</h3>
+             <p class="text-balance text-gr\">{{blog.content}}</p>
+             </div>
+             <a href="#"><button>Edit</button></a>
+            <a href="#"><button>Delete</button></a>
+        </div> 
+     </div>
     </div>
-    </div>
-</div>
 
-{% endfor %}
+
+    {% endfor %}
 
 </div>
 
