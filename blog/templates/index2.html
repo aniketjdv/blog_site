@@ -1,0 +1,25 @@
+{% extends 'base_temp.html'%}
+
+{% block title %}HomePage {% endblock %}
+
+{% block content%}
+ <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">All Blogs</h1>
+       
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Blog Post Example -->
+             {% for blog in blogs %}
+            <div class="bg-white shadow-md rounded-lg overflow-scroll">
+                <img src="{{blog.image.url}}" alt="Blog Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">{{blog.title}}</h2>
+                    <p class="text-gray-700">{{blog.title}}</p>
+                    <a href="#" class="mt-4 inline-block text-blue-500 hover:underline">Read more</a>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -8,10 +8,14 @@
     <title>{% block title %}Default {% endblock %}</title>
     {% tailwind_css %}
     {% block head %} {% endblock %}
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 </head>
 <body>
     <nav class="flex h-14 items-center mx-3">
-    <h3>BlogSite</h3>
+    <h3 class="text-xl"><a href="{% url 'homepage'%}">BlogSite</a></h3>
     </nav>
     {% block content %}
     {% endblock %}

@@ -2,33 +2,74 @@
 {% block title %}HomePage {% endblock %}
 
 {% block content%}
-<div class="h-12 px-2 flex justify-center items-center bg-[#ffffff]">
+{% comment %} <div class="h-12 px-2 flex justify-center items-center bg-[#ffffff]">
     <a href="{% url 'blog_create'%}"><button class="bg-[#6401d4] p-2 text-white h-10 rounded-md  hover:bg-[#3e0085] shadow-md">Create New Blog</button></a>
 </div>
-<div class="bg-slate-900 flex flex-row justify-center  h-screen">
+<div class="bg-slate-900 flex justify-center  h-screen w-screen">
 
 
     {% for blog in blogs %}
 
-    <div class=" text-black p-4 w-80">
-        <div class="flex flex-col  overflow-hidden p-5 justify-between bg-slate-300 rounded-md max-w-80">
+    <div class=" text-black p-4 w-80 h-60">
+        <div class="flex flex-col  p-5 justify-between bg-slate-300 rounded-md">
             
-                <img src="{{blog.image.url}}" alt="image" class="rounded-md shadow-lg object-cover">
-                <div class="mt-5">
+                <img src="{{blog.image.url}}" alt="image" class="rounded-md shadow-lg object-cover max-w-60 max-h-40">
+                <div class="mt-5 max-w-96">
                     <h3 class="text-xl hover:text-yellow-200">{{blog.title}}</h3>
-                     <p class="text-balance text-gr\">{{blog.content}}</p>
+                     <div class="overflow-x-auto">
+                     <p class="text-balance overflow-scroll">{{blog.content}}</p>
+                     </div>
                 </div>
                 <a href="{% url 'blog_edit' blog.id %}"><button>Edit</button></a>
-                <a href="#"><button>Delete</button></a>
+                <a href="{% url 'blog_delete' blog.id %}"><button>Delete</button></a>
                 
         </div> 
         
    
+    </div> {% endcomment %}
+
+<div class="h-12 px-2 flex justify-center items-center bg-[#ffffff]">
+    <a href="{% url 'blog_create'%}"><button class="bg-[#6401d4] p-2 text-white h-10 rounded-md  hover:bg-[#3e0085] shadow-md">Create New Blog</button></a>
+</div>
+<div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">All Blogs</h1>
+       
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Blog Post Example -->
+             {% for blog in blogs %}
+            <div class="bg-white shadow-md rounded-lg overflow-scroll">
+                <img src="{{blog.image.url}}" alt="Blog Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">{{blog.title}}</h2>
+                    <p class="text-gray-700" id="excerpt-{{blog.id}}">{{blog.content|truncatewords:20 }}</p>
+                    {% comment %} <p class="text-gray-700 hidden" id="full-{{blog.id}}">{{ blog.content }}</p>
+                    <button class="mt-4 text-blue-500 hover:underline" onclick="toggleContent(1)">Read More</button> {% endcomment %}
+                    <div class="mt-5">
+                     <a href="{% url 'blog_edit' blog.id %}" class="text-2xl"><button class="hover:text-blue-700"><i class="ri-edit-box-line"></i></button></a>
+                    <a href="{% url 'blog_delete' blog.id %}" class="text-2xl"><button class="hover:text-[#ff1515]"><i class="ri-delete-bin-6-line"></i></button></a>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
     </div>
 
 
-    {% endfor %}
-
 </div>
 
+{% comment %} 
+ <script>
+        function toggleContent(id) {
+            const excerpt = document.getElementById(`excerpt-${id}`);
+            const fullContent = document.getElementById(`full-${id}`);
+
+            if (fullContent.classList.contains('hidden')) {
+                fullContent.classList.remove('hidden');
+                excerpt.classList.add('hidden');
+            } else {
+                fullContent.classList.add('hidden');
+                excerpt.classList.remove('hidden');
+            }
+        }
+    </script> {% endcomment %}
 {% endblock %}

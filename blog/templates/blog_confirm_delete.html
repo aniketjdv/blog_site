@@ -2,9 +2,15 @@
 {% block title %}HomePage {% endblock %}
 
 {% block content%}
-<div class="bg-slate-900 flex flex-row justify-center  h-screen">
+<div class=" flex flex-row justify-center  h-screen w-screen">
 
-    
+<div class="flex bg-[#ffcc01] h-40 w-80 rounded-md shadow-lg justify-center items-center">
+<form method="post" class="form text-white">
+    {% csrf_token %}
+    <button class="h-10 bg-[#e80e0e] rounded-md shadow-sm px-2 hover:bg-[#870000]">Confirm Delete</button>
+    <a href="{% url 'homepage'%}" class="hover:text-blue-600">Go Back</a>
+</form>
+</div>
 
 
 </div>
