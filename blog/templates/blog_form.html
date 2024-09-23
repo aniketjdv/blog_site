@@ -1,0 +1,16 @@
+{% extends 'base_temp.html'%}
+{% block title %}HomePage {% endblock %}
+
+{% block content%}
+<div class="bg-slate-900 flex flex-row justify-center  h-screen">
+
+    <form method="post" class="bg-blue-300">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Save</button>
+    </form>
+
+
+</div>
+
+{% endblock %}
