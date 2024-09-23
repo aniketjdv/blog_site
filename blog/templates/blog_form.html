@@ -2,22 +2,29 @@
 {% block title %}HomePage {% endblock %}
 
 {% block content%}
-<div class="bg-slate-900 flex flex-row justify-center  h-screen">
 
-    <h2>
+<div class="bg-slate-900 flex flex-col items-center justify-center h-screen p-6">
+
+    <h2 class="text-white text-3xl font-semibold mb-6">
     {% if form.instance.pk %} 
-    Edit Tweet 
+        Edit Tweet 
     {% else %}
-    Create Tweet 
+        Create Tweet 
     {% endif %}
-    <form method="post" class="bg-blue-300" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Save</button>
-        <a href="{% url 'homepage' %}">Back to home</a>
-    </form>
-</h2>
+    </h2>
 
+    <form method="post" class="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+            Save
+        </button>
+        <a href="{% url 'homepage' %}" class="block text-center text-blue-600 mt-4 hover:underline">
+            Back to home
+        </a>
+    </form>
 </div>
+
 
 {% endblock %}
