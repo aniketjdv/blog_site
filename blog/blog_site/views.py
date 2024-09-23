@@ -10,7 +10,7 @@ def home(request):
 def blog_create(request):
     if request.method == "POST":
         form = BlogForm(request.POST,request.FILES)
-        if form.is_valid:
+        if form.is_valid():
             blog = form.save(commit=False)
             blog.user=request.user
             blog.save()
@@ -23,7 +23,7 @@ def blog_edit(request,blog_id):
     blog = get_object_or_404(BlogModel,pk=blog_id,user = request.user)
     if request.method == "POST":
         form = BlogForm(request.POST,request.FILES,instance=blog)
-        if form.is_valid:
+        if form.is_valid():
             blog = form.save(commit=False)
             blog.user=request.user
             blog.save()

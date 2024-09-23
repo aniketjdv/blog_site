@@ -18,7 +18,7 @@
                     <h3 class="text-xl hover:text-yellow-200">{{blog.title}}</h3>
                      <p class="text-balance text-gr\">{{blog.content}}</p>
                 </div>
-                <a href="#"><button>Edit</button></a>
+                <a href="{% url 'blog_edit' blog.id %}"><button>Edit</button></a>
                 <a href="#"><button>Delete</button></a>
                 
         </div> 
