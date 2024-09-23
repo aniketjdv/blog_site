@@ -140,3 +140,7 @@ NPM_BIN_PATH = '/usr/local/bin/npm'
 
 # MEDIA_URL = '/photos/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'photos')
+
+LOGIN_URL ='/accounts/login/'
+LOGIN_REDIRECT_URL = '/blog/'
+LOGOUT_REDIRECT_URL = '/blog/'
