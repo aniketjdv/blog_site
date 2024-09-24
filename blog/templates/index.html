@@ -20,8 +20,6 @@
                 <div class="p-4 rounded-lg">
                     <h2 class="text-xl font-semibold mb-2">{{blog.title}}</h2>
                     <p class="text-gray-700" id="excerpt-{{blog.id}}">{{blog.content|truncatewords:20 }}</p>
-                    {% comment %} <p class="text-gray-700 hidden" id="full-{{blog.id}}">{{ blog.content }}</p>
-                    <button class="mt-4 text-blue-500 hover:underline" onclick="toggleContent(1)">Read More</button> {% endcomment %}
                     <h6 class="text-xs text-gray-500">Blog by - {{blog.user.username}}</h6>
                     {% if blog.user == user %}
                     <div class="mt-5">
@@ -41,19 +39,5 @@
 
 </div>
 
-{% comment %} 
- <script>
-        function toggleContent(id) {
-            const excerpt = document.getElementById(`excerpt-${id}`);
-            const fullContent = document.getElementById(`full-${id}`);
 
-            if (fullContent.classList.contains('hidden')) {
-                fullContent.classList.remove('hidden');
-                excerpt.classList.add('hidden');
-            } else {
-                fullContent.classList.add('hidden');
-                excerpt.classList.remove('hidden');
-            }
-        }
-    </script> {% endcomment %}
 {% endblock %}
