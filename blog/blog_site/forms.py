@@ -10,5 +10,5 @@ class BlogForm(forms.ModelForm):
 class UserRegistrationForm(UserCreationForm):
     email=forms.EmailField()
     class Meta:
-        model:User
+        model=User
         fields=('username','email','password1','password2')

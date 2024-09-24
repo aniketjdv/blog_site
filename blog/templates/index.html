@@ -37,17 +37,20 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Blog Post Example -->
              {% for blog in blogs %}
-            <div class="bg-white shadow-md rounded-lg overflow-scroll">
+            <div class="bg-white shadow-md rounded-lg">
                 <img src="{{blog.image.url}}" alt="Blog Image" class="w-full h-48 object-cover">
-                <div class="p-4">
+                <div class="p-4 rounded-lg">
                     <h2 class="text-xl font-semibold mb-2">{{blog.title}}</h2>
                     <p class="text-gray-700" id="excerpt-{{blog.id}}">{{blog.content|truncatewords:20 }}</p>
                     {% comment %} <p class="text-gray-700 hidden" id="full-{{blog.id}}">{{ blog.content }}</p>
                     <button class="mt-4 text-blue-500 hover:underline" onclick="toggleContent(1)">Read More</button> {% endcomment %}
+                    <h6 class="text-xs text-gray-500">Blog by - {{blog.user.username}}</h6>
+                    {% if blog.user == user %}
                     <div class="mt-5">
                      <a href="{% url 'blog_edit' blog.id %}" class="text-2xl"><button class="hover:text-blue-700"><i class="ri-edit-box-line"></i></button></a>
                     <a href="{% url 'blog_delete' blog.id %}" class="text-2xl"><button class="hover:text-[#ff1515]"><i class="ri-delete-bin-6-line"></i></button></a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
     {% endfor %}

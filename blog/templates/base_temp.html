@@ -15,8 +15,22 @@
 
 </head>
 <body>
-    <nav class="flex h-14 items-center bg-[#ffbc04]">
+    <nav class="flex h-14 items-center justify-between bg-[#ffbc04]">
     <h3 class="text-2xl font-bold text-white hover:text-purple-700 mx-3"><a href="{% url 'homepage'%}">BlogSite</a></h3>
+
+    <div class="mx-7 px-3">
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout'%}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="bg-[#ff2b2b] w-28 h-8 rounded-md shadow-lg text-white p-1 hover:bg-[#b31e1e] focus:outline-none focus:shadow-outline transition duration-200">Logout</button>
+
+    </form>
+    {% else %}
+    <a href="{% url 'register'%}"><button class="bg-[#7413ac] w-28 h-8 rounded-md shadow-lg text-white p-1 hover:bg-[#541479] focus:outline-none focus:shadow-outline transition duration-200">Register</button></a>
+    <a href="{% url 'login'%}"><button class="text-white ml-2">Login</button></a> 
+  
+    {% endif %}
+    </div>
     </nav>
     {% block content %}
     {% endblock %}
