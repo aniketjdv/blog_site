@@ -8,6 +8,13 @@ def home(request):
     blogs=BlogModel.objects.all().order_by('-created_at')
     return render(request,'index.html',{'blogs':blogs})
 
+def userblog(request):
+    blogs=BlogModel.objects.all().order_by('-created_at')
+    return render(request,'user_blog.html',{'blogs':blogs})
+
+def blog_page(request):
+    blogs=BlogModel.objects
+    
 
 @login_required
 def blog_create(request):

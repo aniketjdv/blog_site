@@ -1,7 +1,7 @@
 {% load static %}
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +20,8 @@
 
     <div class="mx-7 px-3 flex">
     {% if user.is_authenticated %}
-    <div class="text-white text-lg mx-3">
-    <i class="ri-user-line"></i>{{user.username}}
+    <div class="text-white text-lg mx-3 hover:text-red-800">
+    <a href="{% url 'user_blog'%}"><i class="ri-user-line"></i>{{user.username}}</a>
     </div>
     <form action="{% url 'logout'%}" method="post">
         {% csrf_token %}
